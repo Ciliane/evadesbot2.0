@@ -83,4 +83,4 @@ client.on('ready', () => {
     client.user.setActivity('e!help', { type: 'LISTENING' });
 });
 
-client.login(process.env.token);
+client.login(String(process.env.token));
