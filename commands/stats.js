@@ -2,7 +2,7 @@
 
 
 const fetch = require('node-fetch');
-const embed = require('../utils/embedGenerator.js');
+const embed = require('../utils/embedgenerator.js');
 module.exports = {
 	name: 'stats',
 	aliases: ['profile', 's'],
