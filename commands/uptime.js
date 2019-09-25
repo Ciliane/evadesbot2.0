@@ -1,6 +1,6 @@
 'use strict';
 
-const embed = require('../utils/embedGenerator.js');
+const embed = require('../utils/embedgenerator.js');
 
 module.exports = {
 	name: 'uptime',
