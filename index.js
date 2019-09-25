@@ -82,5 +82,5 @@ client.on('ready', () => {
     console.log('Ready!');
     client.user.setActivity('e!help', { type: 'LISTENING' });
 });
-console.log(process.env.TOKEN);
-//client.login(String(process.env.token));
+
+client.login(String(process.env.TOKEN));
