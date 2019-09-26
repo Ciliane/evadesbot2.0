@@ -58,6 +58,7 @@ module.exports = {
 			const player = challengedPlayers[i];
 			if (player.id == message.author.id) {
 				message.channel.send(player.embed);
+				return;
 			}
 		}
 		let embedy = embed.generateEmbed({
