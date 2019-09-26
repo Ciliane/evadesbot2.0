@@ -15,7 +15,7 @@ module.exports = {
 
 	execute(message, args, client) {
 
-		let user = args[0];
+		let user = encodeURI(args[0]);
 
 		// some validation
 		// just a change to commit
@@ -32,24 +32,6 @@ module.exports = {
 			})
 			);
 			return;
-		}
-		let allowedChars = 'qwertyuiopasdfghjklzxcvbnm1234567890-';
-		allowedChars = allowedChars.split('');
-		for (let i = 0; i < user.length; i++) {
-			let char = String(user.charAt(i)).toLowerCase();
-			if (!allowedChars.includes(char)) {
-				message.channel.send(embed.generateEmbed({
-					name: message.author.tag,
-					icon: message.author.avatarURL,
-					type: 'error',
-					title: 'Illegal chars in this username!',
-					description: '',
-					fields: [],
-					picture: ''
-				})
-				);
-				return;
-			}
 		}
 
 		// creating a promise for getting a JSON from server
