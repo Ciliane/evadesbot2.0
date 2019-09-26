@@ -75,7 +75,7 @@ module.exports = {
 			fields: [],
 			picture: ''
 		});
-		message.channel.send(emvedy);
+		message.channel.send(embedy);
 
 
 		challengedPlayers.push({ id: message.author.id, challenge: embedy, timestamp: Date.now() + 3600000 });
