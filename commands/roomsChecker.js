@@ -56,12 +56,12 @@ module.exports = {
 					fields: [
 						{
 							name: 'US servers',
-							value: usServers,
+							value: String(usServers),
 							inline: true
 						},
 						{
 							name: 'EU servers',
-							value: euServers,
+							value: String(euServers),
 							inline: true
 						}
 					],
