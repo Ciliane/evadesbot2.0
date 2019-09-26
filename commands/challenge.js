@@ -1,5 +1,5 @@
 const worlds = [
-	'Central CoRe',
+	'Central Core',
 	'Central Core Hard',
 	'Vicious Valley',
 	'Vicious Valley Hard',
