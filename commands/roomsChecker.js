@@ -52,7 +52,7 @@ module.exports = {
 					icon: message.author.avatarURL,
 					type: 'default',
 					title: 'Online players total: ' + playersOnline,
-					description: 'description',
+					description: '',
 					fields: [
 						{
 							name: 'US servers',
