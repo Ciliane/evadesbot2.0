@@ -58,7 +58,7 @@ module.exports = {
 			const player = challengedPlayers[i];
 			if (player.id == message.author.id) {
 				if (player.timestamp > Date.now()) {
-					message.channel.send(player.embed);
+					message.channel.send(player.challenge);
 					return;
 				} else {
 					challengedPlayers.splice(challengedPlayers.indexOf(player), 1);
@@ -75,6 +75,7 @@ module.exports = {
 			fields: [],
 			picture: ''
 		});
+		message.channel.send(emvedy);
 
 
 		challengedPlayers.push({ id: message.author.id, challenge: embedy, timestamp: Date.now() + 3600000 });
