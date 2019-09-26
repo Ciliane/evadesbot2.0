@@ -1,5 +1,5 @@
 const worlds = [
-	'Central Code',
+	'Central CoRe',
 	'Central Core Hard',
 	'Vicious Valley',
 	'Vicious Valley Hard',
@@ -57,8 +57,13 @@ module.exports = {
 		for (let i = 0; i < challengedPlayers.length; i++) {
 			const player = challengedPlayers[i];
 			if (player.id == message.author.id) {
-				message.channel.send(player.embed);
-				return;
+				if (player.timestamp > Date.now()) {
+					message.channel.send(player.embed);
+					return;
+				} else {
+					challengedPlayers.splice(challengedPlayers.indexOf(player), 1);
+					break;
+				}
 			}
 		}
 		let embedy = embed.generateEmbed({
@@ -72,6 +77,6 @@ module.exports = {
 		});
 
 
-		challengedPlayers.push({ id: message.author.id, embed: embedy });
+		challengedPlayers.push({ id: message.author.id, challenge: embedy, timestamp: Date.now() + 3600000 });
 	}
 };
