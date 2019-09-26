@@ -249,7 +249,6 @@ module.exports = {
 					});
 					collector.on('end', function () {
 						if (!sentMessage) return;
-						sentMessage.delete();
 					});
 
 				});
