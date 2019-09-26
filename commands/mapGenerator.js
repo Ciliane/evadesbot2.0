@@ -185,7 +185,6 @@ module.exports = {
 
 		promise.then(
 			function (resolve) {
-				// fs.writeFileSync('./generatedMaps/' + resolve.name + '.json', JSON.stringify(resolve));
 
 				message.channel.send(embed.generateEmbed({
 					name: message.author.tag,
