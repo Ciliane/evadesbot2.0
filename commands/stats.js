@@ -35,19 +35,6 @@ module.exports = {
 			return;
 		}
 
-		let sentMessage;
-		message.channel.send(embed.generateEmbed({
-			name: message.author.tag,
-			icon: message.author.avatarURL,
-			type: 'default',
-			title: 'Loading...',
-			description: '',
-			fields: [],
-			picture: ''
-		})
-		).then(bruh => {
-			sentMessage = bruh;
-		});
 
 		// creating a promise for getting a JSON from server
 		let json = new Promise(function (resolve, reject) {
@@ -225,44 +212,46 @@ module.exports = {
 
 				const filter = (reaction, user) => ['⬅', '➡', '❌'].includes(reaction.emoji.name) && user.id == message.author.id;
 
-				sentMessage.edit(pages[0]);
-				sentMessage.react('⬅');
-				setTimeout(() => {
-					sentMessage.react('➡');
-				}, 500);
-				setTimeout(() => {
-					sentMessage.react('❌');
-				}, 1000);
+				message.channel.send(pages[0]).then(sentMessage => {
+					sentMessage.react('⬅');
+					setTimeout(() => {
+						sentMessage.react('➡');
+					}, 500);
+					setTimeout(() => {
+						sentMessage.react('❌');
+					}, 1000);
 
-				let collector = sentMessage.createReactionCollector(filter, { time: 120000 });
-				let currentPage = 0;
+					let collector = sentMessage.createReactionCollector(filter, { time: 120000 });
+					let currentPage = 0;
 
 
 
-				collector.on('collect', reaction => {
-					if (reaction.emoji.name == '⬅') {
-						reaction.remove(message.author);
+					collector.on('collect', reaction => {
+						if (reaction.emoji.name == '⬅') {
+							reaction.remove(message.author);
 
-						currentPage -= 1;
-						if (currentPage < 0) currentPage += 1;
-						sentMessage.edit(pages[currentPage]);
-					}
-					if (reaction.emoji.name == '➡') {
-						reaction.remove(message.author.id);
+							currentPage -= 1;
+							if (currentPage < 0) currentPage += 1;
+							sentMessage.edit(pages[currentPage]);
+						}
+						if (reaction.emoji.name == '➡') {
+							reaction.remove(message.author.id);
 
-						currentPage += 1;
-						if (currentPage == pages.length) currentPage -= 1;
-						pages[currentPage].embed.title = `${user} (page ${currentPage + 1}/${pages.length})`;
-						sentMessage.edit(pages[currentPage]);
-					}
-					if (reaction.emoji.name == '❌') {
-						collector.stop();
+							currentPage += 1;
+							if (currentPage == pages.length) currentPage -= 1;
+							pages[currentPage].embed.title = `${user} (page ${currentPage + 1}/${pages.length})`;
+							sentMessage.edit(pages[currentPage]);
+						}
+						if (reaction.emoji.name == '❌') {
+							collector.stop();
+							sentMessage.delete();
+						}
+					});
+					collector.on('end', function () {
+						if (!sentMessage) return;
 						sentMessage.delete();
-					}
-				});
-				collector.on('end', function () {
-					if (!sentMessage) return;
-					sentMessage.delete();
+					});
+
 				});
 
 
