@@ -18,6 +18,7 @@ module.exports = {
 		let user = args[0];
 
 		// some validation
+		// just a change to commit
 
 		if (!user) {
 			message.channel.send(embed.generateEmbed({
