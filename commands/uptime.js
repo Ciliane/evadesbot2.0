@@ -16,8 +16,22 @@ module.exports = {
 		let time = client.uptime;
 
 		let seconds = time / 1000;
-		let minutes = time / (1000 * 60);
-		let hours = time / (1000 * 60 * 24);
+		let minutes = 0;
+		let hours = 0;
+		let days = 0;
+
+		while (seconds > 60) {
+			minutes += 1;
+			seconds -= 60;
+		}
+		while (minutes > 60) {
+			hours += 1;
+			minutes -= 60;
+		}
+		while (hours > 24) {
+			days += 1;
+			hours -= 24;
+		}
 
 		message.channel.send(embed.generateEmbed({
 			name: message.author.tag,
@@ -27,8 +41,20 @@ module.exports = {
 			description: '',
 			fields: [
 				{
-					name: 'seconds',
-					value: String(seconds.toFixed(1))
+					name: 'Seconds',
+					value: seconds.toFixed(1)
+				},
+				{
+					name: 'Minutes',
+					value: minutes
+				},
+				{
+					name: 'Hours',
+					value: hours
+				},
+				{
+					name: 'Days',
+					value: days
 				}
 			],
 			picture: ''
