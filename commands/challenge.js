@@ -71,6 +71,6 @@ module.exports = {
 		});
 
 
-		challengedPlayers.push({ player: message.author.id, embed: embedy });
+		challengedPlayers.push({ id: message.author.id, embed: embedy });
 	}
 };
