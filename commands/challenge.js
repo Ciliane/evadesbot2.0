@@ -54,7 +54,13 @@ module.exports = {
 		let world = worlds[Math.floor(Math.random() * worlds.length)];
 
 
-		let embed = embed.generateEmbed({
+		for (let i = 0; i < challengedPlayers.length; i++) {
+			const player = challengedPlayers[i];
+			if (player.id == message.author.id) {
+				message.channel.send(player.embed);
+			}
+		}
+		let embedy = embed.generateEmbed({
 			name: message.author.tag,
 			icon: message.author.avatarURL,
 			type: 'default',
@@ -65,6 +71,6 @@ module.exports = {
 		});
 
 
-		challengedPlayers.push(embed);
+		challengedPlayers.push({ player: message.author.id, embed: embedy });
 	}
 };
