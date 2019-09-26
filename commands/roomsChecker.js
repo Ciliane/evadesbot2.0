@@ -33,15 +33,15 @@ module.exports = {
 				let playersOnline = 0;
 
 				for (let i = 0; i < us.length; i++) {
-					const room = us[i];
+					const room = us[i][0];
 
-					usServers.push(`Server ${i}\nPlayers: ${room.connected}/${room.capacity}\n\n`);
+					usServers.push(`Server ${i + 1}\nPlayers: ${room.connected}/${room.capacity}\n\n`);
 					playersOnline += room.connected;
 				}
 				for (let i = 0; i < eu.length; i++) {
-					const room = eu[i];
+					const room = eu[i][0];
 
-					euServers.push(`Server ${i}\nPlayers: ${room.connected}/${room.capacity}`);
+					euServers.push(`Server ${i + 1}\nPlayers: ${room.connected}/${room.capacity}\n\n`);
 					playersOnline += room.connected;
 				}
 
@@ -56,12 +56,12 @@ module.exports = {
 					fields: [
 						{
 							name: 'US servers',
-							value: String(usServers),
+							value: String(usServers.join('')),
 							inline: true
 						},
 						{
 							name: 'EU servers',
-							value: String(euServers),
+							value: String(euServers.join('')),
 							inline: true
 						}
 					],
