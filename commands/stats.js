@@ -15,7 +15,8 @@ module.exports = {
 
 	execute(message, args, client) {
 
-		let user = encodeURI(args[0]);
+		let user = args[0];
+		let userUrl = encodeURI(user);
 
 		// some validation
 		// just a change to commit
@@ -37,7 +38,7 @@ module.exports = {
 		// creating a promise for getting a JSON from server
 		let json = new Promise(function (resolve, reject) {
 			// fetching data
-			fetch('https://evades.io/api/account/' + user, {
+			fetch('https://evades.io/api/account/' + userUrl, {
 				method: 'GET',
 			}).then(response => {
 				// reject if not success
