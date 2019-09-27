@@ -35,7 +35,7 @@ module.exports = {
 	name: 'mapgenerator',
 	aliases: ['randommap', 'randomcode', 'mg', 'codegenerator'],
 	description: 'Generates random evades.io map and sends it after',
-	usage: 'e!mapgenerator',
+	usage: 'e!mapgenerator [seed (optional)]',
 	ownerOnly: false,
 	guildOnly: false,
 	DMOnly: false,
