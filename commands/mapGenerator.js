@@ -31,6 +31,7 @@ const words = {
 
 const embed = require('../utils/embedgenerator.js');
 const seedrandom = require('seedrandom');
+const YAML = require('json-to-pretty-yaml');
 module.exports = {
 	name: 'mapgenerator',
 	aliases: ['randommap', 'randomcode', 'mg', 'codegenerator'],
@@ -133,7 +134,7 @@ module.exports = {
 
 
 
-					if (i > 3) {
+					if (i >= 3) {
 						spawner.push({
 							types: [
 								'wall'
@@ -165,6 +166,17 @@ module.exports = {
 								x: 0,
 								y: 0,
 								width: 320,
+								height: 480
+							},
+							{
+								translate: {
+									x: -160,
+									y: 0
+								},
+								type: 'exit',
+								x: 0,
+								y: 0,
+								width: 64,
 								height: 480
 							},
 							{
@@ -229,7 +241,9 @@ module.exports = {
 					picture: ''
 				}));
 
-				message.channel.send(new Discord.Attachment(Buffer.from(JSON.stringify(resolve), 'utf8'), resolve.name + '.json'));
+
+
+				message.channel.send(new Discord.Attachment(Buffer.from(YAML.stringify(resolve), 'utf8'), resolve.name + '.yaml'));
 			}, function reject(error) {
 				message.reply('Something went wrong while making a map...');
 				console.error(error);
