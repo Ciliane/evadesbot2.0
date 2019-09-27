@@ -133,18 +133,18 @@ module.exports = {
 
 
 
-
+					if (i > 3) {
+						spawner.push({
+							types: [
+								'wall'
+							],
+							radius: Math.floor(seed() * (64 - 32) + 32),
+							speed: Math.floor(seed() * (15 - 5) + 5),
+							count: Math.floor(seed() * (20 - 15) + 15)
+						});
+					}
 					for (let j = 0; j < typesCount; j++) {
-						if (i > 3) {
-							spawner.push({
-								types: [
-									enemies[Math.floor(seed() * enemies.length)]
-								],
-								radius: Math.floor(seed() * (64 - 32) + 32),
-								speed: Math.floor(seed() * (15 - 5) + 5),
-								count: Math.floor(seed() * (20 - 15) + 15)
-							});
-						}
+
 						spawner.push({
 							types: [
 								enemies[Math.floor(seed() * enemies.length)]
