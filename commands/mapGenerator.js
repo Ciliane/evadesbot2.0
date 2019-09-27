@@ -123,7 +123,7 @@ module.exports = {
 					if (i > 40 && i < 45) typesCount = 1;
 					if (i > 45 && i < 55) typesCount = Math.round(Math.random() * 2);
 					if (i > 55 && i < 60) typesCount = 2;
-					if (i > 60 && i < 70) typesCount = Math.round(Math.random() * (3 - 2) + 2);
+					if (i > 60 && i < 70) typesCount = Math.round(Math.random() * (4 - 3) + 3);
 					if (i > 70 && i < 80) typesCount = Math.round(Math.random() * (4 - 3) + 3);
 
 					if (i > 80 && i < 85) typesCount = 1;
@@ -135,7 +135,7 @@ module.exports = {
 
 
 
-					for (let j = 0; j < 4; j++) {
+					for (let j = 0; j < typesCount; j++) {
 						spawner.push({
 							types: [
 								enemies[Math.floor(seed() * enemies.length)]
