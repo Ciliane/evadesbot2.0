@@ -111,6 +111,30 @@ module.exports = {
 						number += 2;
 					}
 					let spawner = [];
+
+					let typesCount = 1;
+
+					if (i > 1 && i < 5) typesCount = 1;
+					if (i > 5 && i < 15) typesCount = Math.round(Math.random() * 2);
+					if (i > 15 && i < 20) typesCount = 2;
+					if (i > 20 && i < 30) typesCount = Math.round(Math.random() * (3 - 2) + 2);
+					if (i > 30 && i < 40) typesCount = Math.round(Math.random() * (4 - 3) + 3);
+
+					if (i > 40 && i < 45) typesCount = 1;
+					if (i > 45 && i < 55) typesCount = Math.round(Math.random() * 2);
+					if (i > 55 && i < 60) typesCount = 2;
+					if (i > 60 && i < 70) typesCount = Math.round(Math.random() * (3 - 2) + 2);
+					if (i > 70 && i < 80) typesCount = Math.round(Math.random() * (4 - 3) + 3);
+
+					if (i > 80 && i < 85) typesCount = 1;
+					if (i > 85 && i < 95) typesCount = Math.round(Math.random() * 2);
+					if (i > 95 && i < 110) typesCount = 2;
+					if (i > 110 && i < 120) typesCount = Math.round(Math.random() * (3 - 2) + 2);
+					if (i > 120 && i < 130) typesCount = Math.round(Math.random() * (4 - 3) + 3);
+
+
+
+
 					for (let j = 0; j < 4; j++) {
 						spawner.push({
 							types: [
