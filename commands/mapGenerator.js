@@ -138,7 +138,7 @@ module.exports = {
 							types: [
 								'wall'
 							],
-							radius: Math.floor(seed() * (64 - 32) + 32),
+							radius: Math.floor(seed() * (64 - 32) + 15),
 							speed: Math.floor(seed() * (15 - 5) + 5),
 							count: Math.floor(seed() * (20 - 15) + 15)
 						});
