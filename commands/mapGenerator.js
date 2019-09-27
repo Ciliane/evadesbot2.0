@@ -24,7 +24,82 @@ const words = {
 			'afraid',
 			'Altitude',
 			'Anger',
-			'Announcement'
+			'Announcement',
+			'ascent'
+		]
+	},
+	b: {
+		primary: [
+			'backside',
+			'bad',
+			'balanced',
+			'ballistic',
+			'boring',
+			'bashing',
+			'basic',
+			'bloody'
+		],
+		secondary: [
+			'badlands',
+			'bacon',
+			'battlefield',
+			'brute',
+			'blaze',
+			'bucket',
+			'bots'
+		]
+	},
+	c: {
+		primary: [
+			'call',
+			'calm',
+			'capable',
+			'central',
+			'careful',
+			'careless',
+			'celestial',
+			'charming'
+		],
+		secondary: [
+			'Cage',
+			'case',
+			'caution',
+			'chance',
+			'charm',
+			'cloud'
+		]
+	},
+	d: {
+		primary: [
+			'digital',
+			'dangerous',
+			'deadly',
+			'dark',
+			'dirty',
+			'distracting',
+			'demotivating',
+			'dramatic'
+		],
+		secondary: [
+			'desert',
+			'dimension',
+			'descent',
+			'darkness',
+			'distort',
+			'division',
+			'deactivation',
+			'destriction',
+			'dive',
+			'deception',
+			''
+		]
+	},
+	e: {
+		primary: [
+			'elite',
+			'entering',
+			'eternal',
+			''
 		]
 	}
 };
@@ -46,8 +121,8 @@ module.exports = {
 		let seed;
 		let thing = String(args.join(' ')) || String(Math.round(Math.random() * 999999));
 		seed = seedrandom(thing);
-		let howmanies = [40, 80, 120];
-		let howmany = howmanies[Math.floor(seed() * howmanies.length)];
+		let worldSizes = [40, 80, 120];
+		let areasTotal = worldSizes[Math.floor(seed() * worldSizes.length)];
 		let promise = new Promise(function (resolve, reject) {
 			let map = {
 
@@ -105,7 +180,7 @@ module.exports = {
 					'ice_sniper'
 				];
 
-				for (let i = 0, x = 0; i < howmany; i++ , x += 3200) {
+				for (let i = 0, x = 0; i < areasTotal; i++ , x += 3200) {
 					let number = 1;
 					if (i == 0) {
 						number += 2;
@@ -155,7 +230,6 @@ module.exports = {
 							count: Math.floor(seed() * (20 - 5) + 5)
 						});
 					}
-
 
 					let area = {
 						x: x,
