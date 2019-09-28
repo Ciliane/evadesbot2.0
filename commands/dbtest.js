@@ -35,7 +35,7 @@ module.exports = {
 				name: args[1],
 				value: args[2]
 			});
-			//ok
+			//okay
 
 			message.channel.send('I hope i added ' + args[1] + ' with ' + args[2] + ' value');
 		}
