@@ -32,8 +32,8 @@ module.exports = {
 	async execute(message, args, client) {
 		if (args[0] == 'create') {
 			let thing = await things.create({
-				name: args[1],
-				value: args[2]
+				name: String(args[1]),
+				value: Number(args[2])
 			});
 			//asdaiupsdhasiudhasd
 
