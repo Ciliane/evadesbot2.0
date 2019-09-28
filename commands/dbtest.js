@@ -10,7 +10,7 @@ const sequelize = new Sequelize('database', 'user', 'password', {
 
 const things = sequelize.define('things', {
 	name: {
-		type: Sequelize.STRINGS,
+		type: Sequelize.STRING,
 		unique: true
 	},
 	value: {
