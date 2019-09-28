@@ -6,7 +6,7 @@ const sequelize = new Sequelize('database', 'user', 'password', {
 	logging: false,
 	operatorsAliases: false,
 	storage: 'database.sqlite'
-});
+});//please work
 
 const things = sequelize.definde('things', {
 	name: {
