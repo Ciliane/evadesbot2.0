@@ -6,9 +6,9 @@ const sequelize = new Sequelize('database', 'user', 'password', {
 	logging: false,
 	operatorsAliases: false,
 	storage: 'database.sqlite'
-});//please work
+});
 
-const things = sequelize.definde('things', {
+const things = sequelize.define('things', {
 	name: {
 		type: Sequelize.STRINGS,
 		unique: true
