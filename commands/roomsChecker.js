@@ -12,19 +12,23 @@ module.exports = {
 	cooldown: 5,
 
 	execute(message, args, client) {
-		let promise = new Promise(function (resolve, reject) {
+		let promise = new Promise(function(resolve, reject) {
+			let timeout = setTimeout(() => {
+				reject('request timeout');
+			}, 10000);
 			fetch('https://evades.io/api/game/list', {
 				method: 'GET',
 			}).then(response => {
 				if (response.status != 200) {
 					reject(response.status);
 				}
+				clearTimeout(timeout);
 				resolve(response.json());
 			});
 		});
 
 		promise.then(
-			function (resolve) {
+			function(resolve) {
 				let us = resolve.local;
 				let eu = resolve.remotes['https://eu.evades.io'];
 

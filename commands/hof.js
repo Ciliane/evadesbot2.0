@@ -14,20 +14,23 @@ module.exports = {
 	cooldown: 4,
 
 	execute(message, args, client) {
-		let json = new Promise(function (resolve, reject) {
+		let json = new Promise(function(resolve, reject) {
+			let timeout = setTimeout(() => {
+				reject('request timeout');
+			}, 10000);
 			fetch('https://evades.io/api/game/hall_of_fame', {
 				method: 'GET',
 			}).then(response => {
 				if (response.status != 200) {
 					return reject(response.status);
 				}
-
+				clearTimeout(timeout);
 				resolve(response.json());
 			});
 		});
 
 		json.then(
-			function (resolve) {
+			function(resolve) {
 				let players = resolve.players;
 				let playersCopy = players;
 				let pages = [];
@@ -68,7 +71,7 @@ module.exports = {
 
 
 					let filter = (reaction, user) => ['❌', '⬅', '➡'].includes(reaction.emoji.name) && user.id == message.author.id;
-					let collector = sentMessage.createReactionCollector(filter, { time: 120000 });
+					let collector = sentMessage.createReactionCollector(filter, {time: 120000});
 
 					let currentPage = 0;
 					collector.on('collect', reaction => {

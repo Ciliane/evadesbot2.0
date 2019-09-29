@@ -37,6 +37,9 @@ module.exports = {
 
 		// creating a promise for getting a JSON from server
 		let json = new Promise(function(resolve, reject) {
+			let timeout = setTimeout(() => {
+				reject('request timeout');
+			}, 10000);
 			// fetching data
 			fetch('https://evades.io/api/account/' + userUrl, {
 				method: 'GET',
@@ -47,6 +50,7 @@ module.exports = {
 					return;
 				}
 				// parse response
+				clearTimeout(timeout);
 				resolve(response.json());
 			});
 
