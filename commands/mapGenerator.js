@@ -238,13 +238,13 @@ module.exports = {
 						if (j == 0) {
 							let arr = enemies[0];
 							enemiesToAdd.push(arr[Math.floor(seed() * arr.length)]);
-						} else if (j == 1) {
+						} if (j == 1) {
 							let arr = enemies[Math.round(seed() * 1)];
 							enemiesToAdd.push(arr[Math.floor(seed() * arr.length)]);
-						} else if (j == 2) {
+						} if (j == 2) {
 							let arr = enemies[1];
 							enemiesToAdd.push(arr[Math.floor(seed() * arr.length)]);
-						} else if (j >= 3) {
+						} if (j >= 3) {
 							let arr = enemies[2];
 							enemiesToAdd.push(arr[Math.floor(seed() * arr.length)]);
 						}
