@@ -119,11 +119,11 @@ module.exports = {
 
 	execute(message, args, client, Discord) {
 		let seed;
-		let thing = String(args.join(' ')) || String(Math.round(Math.random() * 999999));
+		let thing = String(args.join(' ')) || String(Math.round(seed() * 999999));
 		seed = seedrandom(thing);
 		let worldSizes = [40, 80, 120];
 		let areasTotal = worldSizes[Math.floor(seed() * worldSizes.length)];
-		let promise = new Promise(function (resolve, reject) {
+		let promise = new Promise(function(resolve, reject) {
 			let map = {
 
 			};
@@ -142,43 +142,53 @@ module.exports = {
 					],
 					friction: 0.75
 				};
-				if (seed() * 100 > 80) {
+				if (seed() * 100 >= 80) {
 					properties.friction = 0.50;
 				}
 
 
 				let areas = [];
 
+
 				let enemies = [
-					'teleporting',
-					'dasher',
-					'switch',
-					'snowman',
-					'icicle',
-					'draining',
-					'disabling',
-					'normal',
-					'repelling',
-					'regen_sniper',
-					'slowing',
-					'immune',
-					'oscillating',
-					'spiral',
-					'zigzag',
-					'zoning',
-					'speed_sniper',
-					'sizing',
-					'freezing',
-					'turning',
-					'gravity',
-					'wavy',
-					'homing',
-					'liquid',
-					'sniper',
-					'slippery',
-					'radiating_bullets',
-					'ice_sniper'
-				];
+					[
+						'snowman',
+						'repelling',
+						'sizing',
+						'normal',
+						'switch',
+						'dasher',
+						'slowing',
+					],
+					[
+						'teleporting',
+						'icicle',
+						'disabling',
+						'regen_sniper',
+						'speed_sniper',
+						'liquid',
+						'ice_sniper',
+						'homing',
+						'draining',
+						'immune',
+						'oscillating',
+						'wavy',
+						'gravity',
+					],
+					[
+						'zoning',
+						'spiral',
+						'zigzag',
+						'slippery',
+						'sniper',
+						'radiating_bullets',
+						'freezing',
+						'turning',
+					]
+				]
+
+
+				let bossArea = 10;
 
 				for (let i = 0, x = 0; i < areasTotal; i++ , x += 3200) {
 					let number = 1;
@@ -187,25 +197,24 @@ module.exports = {
 					}
 					let spawner = [];
 
+					let enemiesToAdd = [];
+
 					let typesCount = 1;
-
-					if (i > 1 && i < 5) typesCount = 1;
-					if (i > 5 && i < 15) typesCount = Math.round(Math.random() * 2);
-					if (i > 15 && i < 20) typesCount = 2;
-					if (i > 20 && i < 30) typesCount = Math.round(Math.random() * (3 - 2) + 2);
-					if (i > 30 && i < 40) typesCount = Math.round(Math.random() * (4 - 3) + 3);
-
-					if (i > 40 && i < 45) typesCount = 1;
-					if (i > 45 && i < 55) typesCount = Math.round(Math.random() * 2);
-					if (i > 55 && i < 60) typesCount = 2;
-					if (i > 60 && i < 70) typesCount = Math.round(Math.random() * (4 - 3) + 3);
-					if (i > 70 && i < 80) typesCount = Math.round(Math.random() * (4 - 3) + 3);
-
-					if (i > 80 && i < 85) typesCount = 1;
-					if (i > 85 && i < 95) typesCount = Math.round(Math.random() * 2);
-					if (i > 95 && i < 110) typesCount = 2;
-					if (i > 110 && i < 120) typesCount = Math.round(Math.random() * (3 - 2) + 2);
-					if (i > 120 && i < 130) typesCount = Math.round(Math.random() * (4 - 3) + 3);
+					for (let j = 0; j < typesCount; j++) {
+						if (j == 0) {
+							let arr = enemies[0];
+							enemiesToAdd.push(arr[Math.floor(seed() * arr.length)]);
+						} else if (j == 1) {
+							let arr = enemies[Math.round(seed() * 1)];
+							enemiesToAdd.push(arr[Math.floor(seed() * arr.length)]);
+						} else if (j == 2) {
+							let arr = enemies[1];
+							enemiesToAdd.push(arr[Math.floor(seed() * arr.length)]);
+						} else if (j >= 3) {
+							let arr = enemies[2];
+							enemiesToAdd.push(arr[Math.floor(seed() * arr.length)]);
+						}
+					}
 
 
 
@@ -219,11 +228,11 @@ module.exports = {
 							count: Math.floor(seed() * (20 - 15) + 15)
 						});
 					}
-					for (let j = 0; j < typesCount; j++) {
+					for (let j = 0; j < enemiesToAdd.length; j++) {
 
 						spawner.push({
 							types: [
-								enemies[Math.floor(seed() * enemies.length)]
+								enemiesToAdd[j]
 							],
 							radius: Math.floor(seed() * (32 - 10) + 10),
 							speed: Math.floor(seed() * (10 - 5) + 5),
@@ -303,7 +312,7 @@ module.exports = {
 		});
 
 		promise.then(
-			function (resolve) {
+			function(resolve) {
 
 				message.channel.send(embed.generateEmbed({
 					name: message.author.tag,
