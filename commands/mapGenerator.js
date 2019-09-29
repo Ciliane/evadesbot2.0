@@ -1,3 +1,5 @@
+'use strict';
+
 const words = {
 	a: {
 		primary: ['artifical',

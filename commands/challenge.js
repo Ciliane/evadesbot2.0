@@ -1,3 +1,5 @@
+'use strict';
+
 const worlds = [
 	'Central Core',
 	'Central Core Hard',
@@ -78,6 +80,6 @@ module.exports = {
 		message.channel.send(embedy);
 
 
-		challengedPlayers.push({ id: message.author.id, challenge: embedy, timestamp: Date.now() + 3600000 });
+		challengedPlayers.push({id: message.author.id, challenge: embedy, timestamp: Date.now() + 3600000});
 	}
 };

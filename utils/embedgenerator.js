@@ -5,6 +5,11 @@ var colors = {
     success: 0x6EFC3D,
     default: 0x2477AB
 };
+const footers = [
+    'Rework euclid when',
+    'Epic evades.io API bot.',
+    ''
+];
 module.exports.generateEmbed = function generateEmbed(data) {
     var generatedEmbed = {
         author: {
@@ -23,5 +28,5 @@ module.exports.generateEmbed = function generateEmbed(data) {
             icon_url: 'https://cdn.discordapp.com/attachments/594629786639532032/622544203934728222/evades-logo.png'
         }
     };
-    return { embed: generatedEmbed };
+    return {embed: generatedEmbed};
 };

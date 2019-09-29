@@ -1,3 +1,5 @@
+'use strict';
+
 const embed = require('../utils/embedgenerator.js');
 module.exports = {
 	name: 'invite',

@@ -32,12 +32,14 @@ module.exports = {
 
 			commands.forEach(element => {
 				if (element.name) {
-					fields.push(
-						{
-							name: 'e!' + element.name,
-							value: element.description + '\nAliases: ' + element.aliases
-						}
-					);
+					if (!element.ownerOnly) {
+						fields.push(
+							{
+								name: 'e!' + element.name,
+								value: element.description + '\nAliases: ' + element.aliases
+							}
+						);
+					}
 				}
 			});
 			let page = embed.generateEmbed({
@@ -50,7 +52,12 @@ module.exports = {
 				picture: ''
 			});
 
-			message.channel.send(page);
+			try {
+				message.author.send(page);
+
+			} catch (error) {
+				message.reply('Cannot send ')
+			}
 			return;
 		}
 

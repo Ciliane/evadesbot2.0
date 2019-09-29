@@ -99,8 +99,17 @@ module.exports = {
 						}
 					});
 				});
-			}, function reject(error) {
-
+			}, function(error) { // Notify user if promise was rejected, and say the error code
+				message.channel.send(embed.generateEmbed({
+					name: message.author.tag,
+					icon: message.author.avatarURL,
+					type: 'error',
+					title: 'Something went wrong...',
+					description: 'Error code: (' + String(error) + ')',
+					fields: [],
+					picture: ''
+				})
+				);
 			});
 	}
 };

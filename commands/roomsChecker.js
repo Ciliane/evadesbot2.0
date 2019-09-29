@@ -1,9 +1,11 @@
+'use strict';
+
 const fetch = require('node-fetch');
 const embed = require('../utils/embedgenerator.js');
 
 module.exports = {
 	name: 'servers',
-	aliases: ['rooms', 'playersonline'],
+	aliases: ['rooms', 'playersonline', 'serverlist'],
 	description: 'Gets players online on EU and US servers of evades.io',
 	usage: 'e!servers',
 	ownerOnly: false,
@@ -72,13 +74,13 @@ module.exports = {
 					picture: ''
 				})
 				);
-			}, function reject(error) {
+			}, function(error) {
 				message.channel.send(embed.generateEmbed({
 					name: message.author.tag,
 					icon: message.author.avatarURL,
 					type: 'error',
 					title: 'Something went wrong...',
-					description: 'Error code: (' + error + ')',
+					description: 'Error code: (' + String(error) + ')',
 					fields: [],
 					picture: ''
 				})
