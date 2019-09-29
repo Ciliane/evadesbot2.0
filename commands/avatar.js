@@ -1,7 +1,6 @@
 'use strict';
 
-
-const { parseMention } = require('../utils/mentionParser.js');
+const {parseMention} = require('../utils/mentionParser.js');
 
 module.exports = {
 	name: 'avatar',

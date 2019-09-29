@@ -19,7 +19,6 @@ module.exports = {
 		let userUrl = encodeURI(user);
 
 		// some validation
-		// just a change to commit
 
 		if (!user) {
 			message.channel.send(embed.generateEmbed({
@@ -37,7 +36,7 @@ module.exports = {
 
 
 		// creating a promise for getting a JSON from server
-		let json = new Promise(function (resolve, reject) {
+		let json = new Promise(function(resolve, reject) {
 			// fetching data
 			fetch('https://evades.io/api/account/' + userUrl, {
 				method: 'GET',
@@ -56,7 +55,8 @@ module.exports = {
 
 		json.then(
 			// if promise was resolved, say the data
-			function (result) {
+			function(result) {
+				// some variables from data
 				user = user.toUpperCase();
 				let totalVp = result.stats.highest_area_achieved_counter;
 				let weekVp = result.stats.highest_area_achieved_resettable_counter;
@@ -68,9 +68,9 @@ module.exports = {
 				let totalHeroes = 0;
 				let heroesJson = result.stats.highest_area_achieved;
 
-
 				let recordsJson = result.stats.week_record;
 
+				// adding heroes to array if enough areas beaten
 				{
 					if (heroesJson['Central Core'] > 19) {
 						heroes.push('Aurora');
@@ -129,11 +129,14 @@ module.exports = {
 						}
 					}
 
-
+					// if no heroes
 					if (!heroes.length) heroes = 'No heroes';
+
+
 					else heroes = String(heroes.join(',\n'));
 				}
 
+				// getting all hats
 				for (let key in hatsJson) {
 					if (hatsJson[key] == true) {
 						hats += `${key}, \n`;
@@ -144,6 +147,7 @@ module.exports = {
 
 
 
+				// 2 first pages
 				let pages = [
 					embed.generateEmbed({
 						name: message.author.tag,
@@ -182,7 +186,10 @@ module.exports = {
 					})
 				];
 
+				// fields array
 				let fields = [];
+
+				// adding records to fields
 				for (let key in recordsJson) {
 					fields.push(
 						{
@@ -210,6 +217,8 @@ module.exports = {
 
 
 
+
+				// now the easiest part, listening for reactions
 				const filter = (reaction, user) => ['⬅', '➡', '❌'].includes(reaction.emoji.name) && user.id == message.author.id;
 
 				message.channel.send(pages[0]).then(sentMessage => {
@@ -221,7 +230,7 @@ module.exports = {
 						sentMessage.react('❌');
 					}, 1000);
 
-					let collector = sentMessage.createReactionCollector(filter, { time: 120000 });
+					let collector = sentMessage.createReactionCollector(filter, {time: 120000});
 					let currentPage = 0;
 
 
@@ -247,7 +256,7 @@ module.exports = {
 							sentMessage.delete();
 						}
 					});
-					collector.on('end', function () {
+					collector.on('end', function() {
 						if (!sentMessage) return;
 					});
 
@@ -255,7 +264,7 @@ module.exports = {
 
 
 
-			}, function (error) { // Notify user if promise was rejected, and say the error code
+			}, function(error) { // Notify user if promise was rejected, and say the error code
 				message.channel.send(embed.generateEmbed({
 					name: message.author.tag,
 					icon: message.author.avatarURL,
