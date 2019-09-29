@@ -76,6 +76,8 @@ client.on('message', message => {
 			message.channel.stopTyping();
 		}, 500);
 	} catch (error) {
+		message.reply('Something went wrong for executing a command!');
+		message.channel.stopTyping();
 		console.error(error);
 		return;
 	}

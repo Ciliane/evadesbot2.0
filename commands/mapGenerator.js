@@ -191,7 +191,6 @@ module.exports = {
 				let bossArea = 10;
 
 				for (let i = 0, x = 0; i < areasTotal; i++ , x += 3200) {
-					let number = 1;
 					if (i == 0) {
 						number += 2;
 					}
