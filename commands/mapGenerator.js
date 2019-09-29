@@ -199,7 +199,41 @@ module.exports = {
 
 					let enemiesToAdd = [];
 
-					let typesCount = 1;
+					let typesCount = 0;
+					if (i <= 10) {
+						typesCount = 0;
+					} else if (i <= 20) {
+						typesCount = 1;
+					} else if (i <= 30) {
+						typesCount = Math.round(seed() * (2 - 1) + 1);
+					} else if (i <= 40) {
+						typesCount = Math.round(seed() * (3 - 2) + 2);
+					}
+
+
+					if (i <= 50) {
+						typesCount = 0;
+					} else if (i <= 60) {
+						typesCount = 1;
+					} else if (i <= 70) {
+						typesCount = Math.round(seed() * (3 - 2) + 2);
+					} else if (i <= 80) {
+						typesCount = Math.round(seed() * (4 - 2) + 2);
+					}
+
+
+
+					if (i <= 90) {
+						typesCount = 0;
+					} else if (i <= 100) {
+						typesCount = 1;
+					} else if (i <= 110) {
+						typesCount = Math.round(seed() * (3 - 2) + 2);
+					} else if (i <= 120) {
+						typesCount = Math.round(seed() * (4 - 3) + 3);
+					}
+
+
 					for (let j = 0; j < typesCount; j++) {
 						if (j == 0) {
 							let arr = enemies[0];
@@ -223,7 +257,7 @@ module.exports = {
 							types: [
 								'wall'
 							],
-							radius: Math.floor(seed() * (64 - 32) + 15),
+							radius: Math.floor(seed() * 32 + 15),
 							speed: Math.floor(seed() * (15 - 5) + 5),
 							count: Math.floor(seed() * (20 - 15) + 15)
 						});
