@@ -119,7 +119,7 @@ module.exports = {
 
 	execute(message, args, client, Discord) {
 		let seed;
-		let thing = String(args.join(' ')) || String(Math.round(seed() * 999999));
+		let thing = String(args.join(' ')) || String(Math.round(Math.random() * 999999));
 		seed = seedrandom(thing);
 		let worldSizes = [40, 80, 120];
 		let areasTotal = worldSizes[Math.floor(seed() * worldSizes.length)];
