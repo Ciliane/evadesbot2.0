@@ -245,6 +245,7 @@ module.exports = {
 
 							currentPage -= 1;
 							if (currentPage < 0) currentPage += 1;
+							pages[currentPage].embed.title = `_**${user}**_ (page ${currentPage + 1}/${pages.length})`;
 							sentMessage.edit(pages[currentPage]);
 						}
 						if (reaction.emoji.name == '➡') {
@@ -252,7 +253,7 @@ module.exports = {
 
 							currentPage += 1;
 							if (currentPage == pages.length) currentPage -= 1;
-							pages[currentPage].embed.title = `${user} (page ${currentPage + 1}/${pages.length})`;
+							pages[currentPage].embed.title = `_**${user}**_ (page ${currentPage + 1}/${pages.length})`;
 							sentMessage.edit(pages[currentPage]);
 						}
 						if (reaction.emoji.name == '❌') {
