@@ -67,6 +67,7 @@ module.exports = {
 
 				let hats = '';
 				let hatsJson = result.accessories.hat_collection;
+				let currentHat = result.accessories.hat_selection;
 
 				let heroes = [];
 				let totalHeroes = 0;
@@ -142,8 +143,11 @@ module.exports = {
 
 				// getting all hats
 				for (let key in hatsJson) {
-					if (hatsJson[key] == true) {
-						hats += `${key}, \n`;
+					if (hatsJson[key] && key == currentHat) {
+						hats += `**${key}**,\n`
+					}
+					else if (hatsJson[key]) {
+						hats += `${key},\n`;
 					}
 				}
 				if (!hats) hats = 'No hats';
