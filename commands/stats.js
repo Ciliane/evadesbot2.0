@@ -144,7 +144,7 @@ module.exports = {
 				// getting all hats
 				for (let key in hatsJson) {
 					if (hatsJson[key] && key == currentHat) {
-						hats += `**${key}**,\n`
+						hats += `**${key}** (active),\n`
 					}
 					else if (hatsJson[key]) {
 						hats += `${key},\n`;
