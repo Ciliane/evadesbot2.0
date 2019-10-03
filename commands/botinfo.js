@@ -1,4 +1,5 @@
 const fs = require('fs');
+const embed = require('../utils/embedgenerator.js');
 module.exports = {
 	name: 'botinfo',
 	aliases: ['info', 'botstats'],
