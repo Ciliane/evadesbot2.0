@@ -41,28 +41,8 @@ client.on('message', message => {
 	let args = message.content.slice(prefix.length).split(' ');
 	let commandName = args.shift();
 
-	let command =
-		commands.get(commandName) ||
-		commands.get(commandsAliases.get(commandName));
+	let command = commands.get(commandName) || commands.get(commandsAliases.get(commandName));
 	if (!command) return;
-
-	if (
-		cooldowns[message.author.id] &&
-		cooldowns[message.author.id] > Date.now()
-	) {
-		message.channel.send(
-			embed.generateEmbed({
-				name: message.author.tag,
-				icon: message.author.avatarURL,
-				type: 'default',
-				title: 'You are under cooldown, wait for a bit...',
-				description: 'Why? To prevent API commands abuse',
-				fields: [],
-				picture: ''
-			})
-		);
-		return;
-	}
 
 	if (command.ownerOnly && message.author.id != '369217982594940931') return;
 	if (command.guildOnly && !message.guild) return;
@@ -81,10 +61,6 @@ client.on('message', message => {
 		console.error(error);
 		return;
 	}
-
-	let seconds = command.cooldown * 1000;
-
-	cooldowns[message.author.id] = Date.now() + seconds;
 });
 
 client.on('ready', () => {
