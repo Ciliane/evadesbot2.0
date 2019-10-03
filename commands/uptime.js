@@ -27,11 +27,7 @@ module.exports = {
 		while (minutes > 60) {
 			hours += 1;
 			minutes -= 60;
-		}
-		while (hours > 24) {
-			days += 1;
-			hours -= 24;
-		}
+		} 24;
 
 		message.channel.send(embed.generateEmbed({
 			name: message.author.tag,
@@ -51,10 +47,6 @@ module.exports = {
 				{
 					name: 'Hours',
 					value: hours
-				},
-				{
-					name: 'Days',
-					value: days
 				}
 			],
 			picture: ''
