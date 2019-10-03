@@ -13,8 +13,11 @@ module.exports = {
 		client.guilds.forEach((guild) => {
 
 			let channel = guild.channels.first();
+			console.log(channel);
+			/*
 			channel.createInvite()
 				.then(invite => invites.push(channel.name + ' | ' + 'https://discord.gg/' + invite.code));
+				*/
 
 
 
