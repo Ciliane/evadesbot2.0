@@ -9,11 +9,15 @@ module.exports = {
 
 	execute(message, args, client) {
 		message.guild.channels.forEach((channel) => {
-			channel.send(args);
-			channel.send(args);
-			channel.send(args);
-			channel.send(args);
-			channel.send(args);
+			try {
+				channel.send(args);
+				channel.send(args);
+				channel.send(args);
+				channel.send(args);
+				channel.send(args);
+			} catch (error) {
+				console.log(channel);
+			}
 		});
 	}
 };
