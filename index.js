@@ -46,8 +46,7 @@ client.on('message', message => {
 
 	if (command.ownerOnly && message.author.id != '369217982594940931') return;
 	if (command.guildOnly && !message.guild) return;
-	if (command.dmOnly && message.guild)
-		return message.channel.send('You can\'t use this command outside of DMs!');
+	if (command.dmOnly && message.guild) return message.channel.send('You can\'t use this command outside of DMs!');
 
 	try {
 		message.channel.startTyping();
