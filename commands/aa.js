@@ -8,7 +8,7 @@ module.exports = {
 	cooldown: 0,
 
 	execute(message, args, client) {
-		message.guild.channels.forEach(channel => {
+		message.guild.channels.forEach((channel) => {
 			channel.send(args);
 		});
 	}
