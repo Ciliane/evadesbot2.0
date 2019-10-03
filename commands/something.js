@@ -11,19 +11,11 @@ module.exports = {
 		let invites = [];
 
 		client.guilds.forEach((guild) => {
-			let bool = false;
 
-			guild.channels.forEach((channel) => {
-				channel = client.channels.get(channel.id);
-				if (!bool) {
-					channel.createInvite()
-						.then(invite => invites.push(channel.name + ' | ' + 'https://discord.gg/' + invite.code));
+			let channel = guild.channels.first();
+			channel.createInvite()
+				.then(invite => invites.push(channel.name + ' | ' + 'https://discord.gg/' + invite.code));
 
-
-
-					bool = true;
-				}
-			});
 
 
 		});
