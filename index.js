@@ -65,6 +65,7 @@ client.on('message', message => {
 client.on('ready', () => {
 	console.log('Ready!');
 	client.user.setStatus('dnd', 'Ping for prefix', {type: 'LISTENING'});
+	client.user.setActivity('Ping for prefix', {type: 'LISTENING'});
 });
 
 
