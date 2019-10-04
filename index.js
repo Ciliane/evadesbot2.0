@@ -53,7 +53,7 @@ client.on('message', message => {
 		command.execute(message, args, client, Discord);
 		setTimeout(() => {
 			message.channel.stopTyping();
-		}, 500);
+		}, 1000);
 	} catch (error) {
 		message.reply('Something went wrong for executing a command!');
 		message.channel.stopTyping();

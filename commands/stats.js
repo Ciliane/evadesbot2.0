@@ -37,6 +37,7 @@ module.exports = {
 
 		// creating a promise for getting a JSON from server
 		let json = new Promise(function(resolve, reject) {
+			// request timeout rejection if servers are down
 			let timeout = setTimeout(() => {
 				reject('request timeout');
 			}, 10000);
@@ -45,7 +46,7 @@ module.exports = {
 				method: 'GET',
 			}).then(response => {
 				// reject if not success
-				if (response.status != 200) {
+				if (response.status != 200 || !response.ok) {
 					reject(response.status);
 					return;
 				}
@@ -138,7 +139,7 @@ module.exports = {
 					if (!heroes.length) heroes = 'No heroes';
 
 
-					else heroes = String(heroes.join(',\n'));
+					else heroes = String(heroes.join('\n'));
 				}
 
 				// getting all hats
