@@ -27,28 +27,20 @@ module.exports = {
 		while (minutes > 60) {
 			hours += 1;
 			minutes -= 60;
-		} 24;
+		}
 
+		let timeString = '';
+
+		if (seconds > 0) timeString += `${seconds} seconds`;
+		if (minutes > 0) timeString += `, ${minutes} minutes`;
+		if (hours > 0) timeString += `, ${hours} hours`
 		message.channel.send(embed.generateEmbed({
 			name: message.author.tag,
 			icon: message.author.avatarURL,
 			type: 'default',
 			title: 'Uptime',
-			description: '',
-			fields: [
-				{
-					name: 'Seconds',
-					value: seconds.toFixed(1)
-				},
-				{
-					name: 'Minutes',
-					value: minutes
-				},
-				{
-					name: 'Hours',
-					value: hours
-				}
-			],
+			description: timeString,
+			fields: [],
 			picture: ''
 		})
 		);
