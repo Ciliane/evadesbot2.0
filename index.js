@@ -65,6 +65,9 @@ client.on('message', message => {
 client.on('ready', () => {
 	console.log('Ready!');
 	client.user.setActivity('Ping for prefix', {type: 'LISTENING'});
+	client.setStatus('dnd');
 });
+
+
 
 client.login(String(process.env.TOKEN));

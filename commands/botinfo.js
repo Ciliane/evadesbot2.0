@@ -1,3 +1,5 @@
+'use strict';
+
 const fs = require('fs');
 const embed = require('../utils/embedgenerator.js');
 module.exports = {
