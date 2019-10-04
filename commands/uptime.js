@@ -31,6 +31,9 @@ module.exports = {
 
 		let timeString = '';
 
+
+		seconds = Math.floor(seconds);
+
 		if (seconds > 0) timeString += `${seconds} seconds`;
 		if (minutes > 0) timeString += `, ${minutes} minutes`;
 		if (hours > 0) timeString += `, ${hours} hours`
