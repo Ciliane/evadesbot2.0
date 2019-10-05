@@ -3,7 +3,7 @@
 var colors = {
     error: 0xFC3D3D,
     success: 0x6EFC3D,
-    default: 0x2477AB
+    default: 0x9356BF
 };
 const footers = [
     'Rework euclid when',
