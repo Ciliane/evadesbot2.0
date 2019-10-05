@@ -17,7 +17,7 @@ module.exports = {
 			icon: message.author.avatarURL,
 			type: 'default',
 			title: 'Link',
-			description: '[Invite me!](https://discordapp.com/oauth2/authorize?client_id=622188092782018600&scope=bot&permissions=247824)',
+			description: '[Invite me!](https://discordapp.com/oauth2/authorize?client_id=622188092782018600&scope=bot&permissions=256000)',
 			fields: [],
 			picture: ''
 		})
