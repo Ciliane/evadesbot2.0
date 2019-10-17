@@ -42,7 +42,19 @@ client.on('message', message => {
 	let commandName = args.shift();
 
 	let command = commands.get(commandName) || commands.get(commandsAliases.get(commandName));
-	if (!command) return;
+	if (!command) {
+		message.channel.send(embed.generateEmbed({
+			name: message.author.tag,
+			icon: message.author.avatarURL,
+			type: 'default',
+			title: 'Command not found',
+			description: 'Use `e!help` for list of all avaible commands',
+			fields: [],
+			picture: ''
+		})
+		)
+		return;
+	}
 
 	if (command.ownerOnly && message.author.id != '369217982594940931') return;
 	if (command.guildOnly && !message.guild) return;
