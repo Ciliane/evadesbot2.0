@@ -163,7 +163,7 @@ module.exports = {
 						icon: message.author.avatarURL,
 						type: 'default',
 						title: `_**${user.toUpperCase()}**_`,
-						description: 'VP and hats\nReact with arrows to navigate bewtween stats pages',
+						description: 'VP and hats\nReact with arrows to navigate between stats pages',
 						fields: [
 							{
 								name: '_**VP**_',
