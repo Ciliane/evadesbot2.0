@@ -25,13 +25,6 @@ for (let file of commandFiles) {
 
 let cooldowns = {};
 client.on('message', message => {
-	if (message.content.startsWith('<@622188092782018600>')) {
-		message.reply(
-			'Prefix is `e!`\nSay e!help for list of all avaible commands'
-		);
-		return;
-	}
-
 	if (
 		!message.content.startsWith(prefix) ||
 		(message.author.bot && message.author.id != client.user.id)
@@ -76,8 +69,7 @@ client.on('message', message => {
 
 client.on('ready', () => {
 	console.log('Ready!');
-	client.user.setStatus('dnd', 'Ping for prefix', {type: 'LISTENING'});
-	client.user.setActivity('Ping for prefix', {type: 'LISTENING'});
+	client.user.setActivity('prefix is e!', {type: 'LISTENING'});
 });
 
 
